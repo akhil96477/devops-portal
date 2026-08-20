@@ -1,6 +1,20 @@
 name: 'GitOps Provisioning Engine'
 
 on:
+  workflow_dispatch:
+    inputs:
+      resource_id:
+        description: 'Resource ID'
+        required: true
+        default: 'test-res-123'
+      resource_name:
+        description: 'Resource Name'
+        required: true
+        default: 'test-environment'
+      template_type:
+        description: 'Template Type'
+        required: true
+        default: 'static-site'
   repository_dispatch:
     types: [terraform-deploy]
 
@@ -31,13 +45,18 @@ jobs:
     - name: Terraform Apply
       working-directory: ./terraform
       run: |
+        RES_ID="${{ github.event.inputs.resource_id || github.event.client_payload.resource_id }}"
+        RES_NAME="${{ github.event.inputs.resource_name || github.event.client_payload.resource_name }}"
+        TMPL_TYPE="${{ github.event.inputs.template_type || github.event.client_payload.template_type }}"
+        
         terraform apply -auto-approve \
-          -var="resource_id=${{ github.event.client_payload.resource_id }}" \
-          -var="resource_name=${{ github.event.client_payload.resource_name }}" \
-          -var="template_type=${{ github.event.client_payload.template_type }}"
+          -var="resource_id=${RES_ID}" \
+          -var="resource_name=${RES_NAME}" \
+          -var="template_type=${TMPL_TYPE}"
           
     - name: Update DynamoDB Status
       run: |
+        RES_ID="${{ github.event.inputs.resource_id || github.event.client_payload.resource_id }}"
         # In a real environment, you would use aws-cli here to update DynamoDB 
         # setting the status from "Pending Provisioning" to "Active"
-        echo "Updating DynamoDB status to Active for resource ${{ github.event.client_payload.resource_id }}"
+        echo "Updating DynamoDB status to Active for resource ${RES_ID}"
