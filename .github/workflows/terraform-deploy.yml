@@ -1,0 +1,43 @@
+name: 'GitOps Provisioning Engine'
+
+on:
+  repository_dispatch:
+    types: [terraform-deploy]
+
+jobs:
+  provision-infrastructure:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v2
+      with:
+        terraform_version: 1.5.0
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+
+    - name: Terraform Init
+      working-directory: ./terraform
+      run: terraform init
+
+    - name: Terraform Apply
+      working-directory: ./terraform
+      run: |
+        terraform apply -auto-approve \
+          -var="resource_id=${{ github.event.client_payload.resource_id }}" \
+          -var="resource_name=${{ github.event.client_payload.resource_name }}" \
+          -var="template_type=${{ github.event.client_payload.template_type }}"
+          
+    - name: Update DynamoDB Status
+      run: |
+        # In a real environment, you would use aws-cli here to update DynamoDB 
+        # setting the status from "Pending Provisioning" to "Active"
+        echo "Updating DynamoDB status to Active for resource ${{ github.event.client_payload.resource_id }}"
