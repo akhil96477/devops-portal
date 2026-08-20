@@ -9,7 +9,7 @@ const Dashboard = ({ setActiveTab }) => {
         
         {/* Top Welcome Panel */}
         <div className="panel" style={{ padding: '2.5rem' }}>
-          <h2 style={{ fontSize: '1.8rem', marginBottom: '0.5rem', letterSpacing: '-0.03em' }}>Welcome back, Alex.</h2>
+          <h2 style={{ fontSize: '1.8rem', marginBottom: '0.5rem', letterSpacing: '-0.03em' }}>Welcome back, Akhil.</h2>
           <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', maxWidth: '600px' }}>
             Your infrastructure is operating normally. You have provisioned 4 resources this month, saving an estimated $142.00 using the AWS Free Tier.
           </p>

@@ -63,10 +63,10 @@ function App() {
 
           <div className="user-profile">
             <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column' }}>
-              <span style={{ fontSize: '0.9rem', fontWeight: '600', color: 'var(--text-main)', lineHeight: '1.2' }}>alex.dev</span>
+              <span style={{ fontSize: '0.9rem', fontWeight: '600', color: 'var(--text-main)', lineHeight: '1.2' }}>akhil.dev</span>
               <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Administrator</span>
             </div>
-            <div className="avatar">AD</div>
+            <div className="avatar">AK</div>
           </div>
         </header>
         
