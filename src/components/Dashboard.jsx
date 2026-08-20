@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Dashboard = () => {
+const Dashboard = ({ setActiveTab }) => {
   return (
     <div className="content-area" style={{ height: 'calc(100vh - 70px)', paddingBottom: '2rem' }}>
       
@@ -14,8 +14,8 @@ const Dashboard = () => {
             Your infrastructure is operating normally. You have provisioned 4 resources this month, saving an estimated $142.00 using the AWS Free Tier.
           </p>
           <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem' }}>
-            <button className="btn primary" style={{ padding: '0.75rem 1.5rem' }}>Quick Deploy</button>
-            <button className="btn" style={{ padding: '0.75rem 1.5rem' }}>View Active Resources</button>
+            <button className="btn primary" style={{ padding: '0.75rem 1.5rem' }} onClick={() => setActiveTab('deploy')}>Quick Deploy</button>
+            <button className="btn" style={{ padding: '0.75rem 1.5rem' }} onClick={() => setActiveTab('resources')}>View Active Resources</button>
           </div>
         </div>
 

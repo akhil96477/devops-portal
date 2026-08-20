@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Dashboard from './components/Dashboard'
 import DeployForm from './components/DeployForm'
 import ResourcesList from './components/ResourcesList'
+import Settings from './components/Settings'
 import './App.css'
 
 function App() {
@@ -69,15 +70,10 @@ function App() {
           </div>
         </header>
         
-        {activeTab === 'dashboard' && <Dashboard />}
+        {activeTab === 'dashboard' && <Dashboard setActiveTab={setActiveTab} />}
         {activeTab === 'deploy' && <DeployForm />}
         {activeTab === 'resources' && <ResourcesList />}
-        {activeTab === 'settings' && (
-          <div style={{ padding: '2rem' }}>
-            <h2>Settings</h2>
-            <p style={{ color: 'var(--text-muted)' }}>Configuration options will appear here.</p>
-          </div>
-        )}
+        {activeTab === 'settings' && <Settings />}
       </main>
     </div>
   )
