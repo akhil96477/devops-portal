@@ -32,13 +32,17 @@ function App() {
           </ul>
         </div>
         
-        {/* Sidebar Footer */}
-        <div style={{ marginTop: 'auto', borderTop: '1px solid var(--border-color)', paddingTop: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <span style={{ fontSize: '0.75rem', fontWeight: '600', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Documentation</span>
-          <a href="#" style={{ fontSize: '0.85rem', color: 'var(--text-main)', textDecoration: 'none' }}>API Reference</a>
-          <a href="#" style={{ fontSize: '0.85rem', color: 'var(--text-main)', textDecoration: 'none' }}>Terraform Modules</a>
-          <div style={{ marginTop: '1rem', fontSize: '0.75rem', color: 'var(--text-muted)', fontFamily: 'JetBrains Mono, monospace' }}>
-            v2.4.1 — Stable Build
+        {/* Sidebar Footer - Heavy UI block */}
+        <div style={{ marginTop: 'auto', background: '#f8fafc', padding: '1.25rem', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
+          <h4 style={{ fontSize: '0.8rem', textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '0.05em', marginBottom: '0.75rem' }}>Environment Health</h4>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
+            <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--success)' }}></div>
+            <span style={{ fontSize: '0.9rem', fontWeight: '500', color: 'var(--text-main)' }}>All Systems Normal</span>
+          </div>
+          <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Last checked 2 mins ago.</p>
+          <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid #e2e8f0', display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem' }}>
+            <a href="#" style={{ color: 'var(--primary-color)', textDecoration: 'none', fontWeight: '500' }}>View Docs</a>
+            <span style={{ color: 'var(--text-muted)', fontFamily: 'JetBrains Mono, monospace' }}>v2.4.1</span>
           </div>
         </div>
       </aside>
@@ -46,17 +50,21 @@ function App() {
       {/* Main Content */}
       <main className="main-content">
         <header className="header" style={{ justifyContent: 'space-between' }}>
-          {/* Top Header Typographic Element */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: 'var(--text-muted)', fontSize: '0.85rem', fontFamily: 'JetBrains Mono, monospace' }}>
-            <span>/</span>
-            <span style={{ color: 'var(--primary-color)', fontWeight: '500' }}>aws-free-tier</span>
-            <span>/</span>
-            <span>us-east-1</span>
-            <span style={{ padding: '0.2rem 0.5rem', background: '#f1f5f9', borderRadius: '4px', border: '1px solid var(--border-color)', fontSize: '0.75rem' }}>PRODUCTION</span>
+          
+          {/* Heavy Search Bar Element */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: '#f1f5f9', padding: '0.5rem 1rem', borderRadius: '6px', border: '1px solid var(--border-color)', width: '350px' }}>
+              <span style={{ color: '#94a3b8' }}>🔍</span>
+              <input type="text" placeholder="Search resources, logs, or deployments (Press '/')" style={{ border: 'none', background: 'transparent', outline: 'none', fontSize: '0.85rem', width: '100%', color: 'var(--text-main)' }} />
+            </div>
+            <span style={{ padding: '0.25rem 0.5rem', background: '#f8fafc', borderRadius: '4px', border: '1px solid var(--border-color)', fontSize: '0.7rem', color: 'var(--text-muted)', fontFamily: 'JetBrains Mono, monospace' }}>us-east-1</span>
           </div>
 
           <div className="user-profile">
-            <span>alex.dev</span>
+            <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column' }}>
+              <span style={{ fontSize: '0.9rem', fontWeight: '600', color: 'var(--text-main)', lineHeight: '1.2' }}>alex.dev</span>
+              <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Administrator</span>
+            </div>
             <div className="avatar">AD</div>
           </div>
         </header>
