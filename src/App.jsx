@@ -12,10 +12,10 @@ function App() {
       {/* Sidebar */}
       <aside className="sidebar">
         <div className="brand">
-          <span className="highlight">[ ]</span> DEVOPS_PORTAL
+          <span className="highlight">■</span> DevOpsPortal
         </div>
         
-        <ul className="nav-links">
+        <ul className="nav-links" style={{ marginTop: '1rem' }}>
           <li className={`nav-item ${activeTab === 'dashboard' ? 'active' : ''}`} onClick={() => setActiveTab('dashboard')}>
             Dashboard
           </li>
@@ -35,8 +35,8 @@ function App() {
       <main className="main-content">
         <header className="header">
           <div className="user-profile">
-            <span>alex_dev</span>
-            <div className="avatar">A</div>
+            <span>alex.dev</span>
+            <div className="avatar">AD</div>
           </div>
         </header>
         
